@@ -61,6 +61,7 @@ export class Main1 extends Component {
   };
   handleButtonClick = () => {
     onclick=this.handleClickOutside
+
     console.log("button")
     this.setState(state => {
       return {
