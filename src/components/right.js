@@ -23,7 +23,6 @@ export class Main1 extends Component {
   }
   componentDidMount() {
     console.log("hii")
-    document.addEventListener("mousedown", this.handleClickOutside);
     axios
       .get(`https://api.github.com/users/supreetsingh247/repos`)
       .then(resp => {
@@ -50,23 +49,9 @@ export class Main1 extends Component {
 
       .catch(error => {
         console.log(error);
-      });
-      document.addEventListener("click",()=>{
-            const details = document.querySelectorAll("details");
-            details.forEach((targetDetail) => {
-              targetDetail.addEventListener("click", () => {
-                details.forEach((detail) => {
-                  if (detail !== targetDetail) {
-                    detail.removeAttribute("open");
-                  }
-                });
-              });
-            });
-    });
+      }); 
   }
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-  } 
+   
   handleClickOutside = event => {
     if (this.container.current && !this.container.current.contains(event.target)) {
       this.setState({
@@ -75,6 +60,7 @@ export class Main1 extends Component {
     }
   };
   handleButtonClick = () => {
+    document.addEventListener("mousedown", this.handleClickOutside);
     console.log("button")
     this.setState(state => {
       return {
